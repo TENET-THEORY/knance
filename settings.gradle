@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 rootProject.name = "knance"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+include(":market-data:domain")
