@@ -1,0 +1,6 @@
+.idea
+.gradle
+.kotlin
+build
+node_modules
+ktor.env
