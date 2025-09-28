@@ -1,4 +1,4 @@
-package io.tenetinc.finance.domain.model.security
+package io.tenetinc.knance.domain.model.security
 
 interface Security {
   val id: Int?

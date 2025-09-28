@@ -1,4 +1,4 @@
-package io.tenetinc.finance.domain.model.security
+package io.tenetinc.knance.domain.model.security
 
 data class Stock(
     override val id: Int? = null,

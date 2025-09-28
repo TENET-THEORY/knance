@@ -1,4 +1,4 @@
-package io.tenetinc.finance.domain.model.security
+package io.tenetinc.knance.domain.model.security
 
 data class PriceData(
     val currentPrice: Float,

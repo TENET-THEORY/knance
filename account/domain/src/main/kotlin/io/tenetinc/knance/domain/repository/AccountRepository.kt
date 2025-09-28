@@ -1,9 +1,9 @@
-package io.tenetinc.finance.domain.repository
+package io.tenetinc.knance.domain.repository
 
-import io.tenetinc.finance.domain.datastore.AccountDataStore
-import io.tenetinc.finance.domain.model.Account
-import io.tenetinc.finance.domain.model.Assets
-import io.tenetinc.finance.domain.model.security.ETF
+import io.tenetinc.knance.domain.datastore.AccountDataStore
+import io.tenetinc.knance.domain.model.Account
+import io.tenetinc.knance.domain.model.Assets
+import io.tenetinc.knance.domain.model.security.ETF
 
 open class AccountRepository(private val accountDataStore: AccountDataStore) {
   open suspend fun findById(id: Int): Account? {

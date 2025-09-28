@@ -1,9 +1,9 @@
-package io.tenetinc.finance.domain.datastore
+package io.tenetinc.knance.domain.datastore
 
-import io.tenetinc.finance.domain.model.Account
-import io.tenetinc.finance.domain.model.Cash
-import io.tenetinc.finance.domain.model.security.ETF
-import io.tenetinc.finance.domain.model.security.Stock
+import io.tenetinc.knance.domain.model.Account
+import io.tenetinc.knance.domain.model.Cash
+import io.tenetinc.knance.domain.model.security.ETF
+import io.tenetinc.knance.domain.model.security.Stock
 
 interface AccountDataStore {
   suspend fun findById(id: Int): Account?

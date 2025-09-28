@@ -1,6 +1,6 @@
-package io.tenetinc.finance.domain.model.security
+package io.tenetinc.knance.domain.model.security
 
-import io.tenetinc.finance.domain.model.AssetType
+import io.tenetinc.knance.domain.model.AssetType
 
 data class ETF(
     override val id: Int? = null,

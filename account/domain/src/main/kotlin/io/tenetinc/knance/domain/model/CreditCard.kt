@@ -1,3 +1,3 @@
-package io.tenetinc.finance.domain.model
+package io.tenetinc.knance.domain.model
 
 data class CreditCard(val id: Int? = null, val balance: Float)

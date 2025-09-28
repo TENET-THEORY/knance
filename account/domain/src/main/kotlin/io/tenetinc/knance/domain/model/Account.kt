@@ -1,7 +1,7 @@
-package io.tenetinc.finance.domain.model
+package io.tenetinc.knance.domain.model
 
-import io.tenetinc.finance.domain.model.security.ETF
-import io.tenetinc.finance.domain.model.security.Stock
+import io.tenetinc.knance.domain.model.security.ETF
+import io.tenetinc.knance.domain.model.security.Stock
 
 data class Account(
     val id: Int,

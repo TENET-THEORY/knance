@@ -19,6 +19,8 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include("account:domain")
 
+include("account:exposed")
+
 include("market-data:alpha-vantage")
 
 include(":market-data:domain")
