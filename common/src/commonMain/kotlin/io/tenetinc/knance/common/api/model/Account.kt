@@ -8,10 +8,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 @JsExport
 data class Account(
-  val id: Int? = null,
-  val name: String,
-  val cashHoldings: List<Cash> = emptyList(),
-  val stockHoldings: List<Stock> = emptyList(),
-  val etfHoldings: List<Etf> = emptyList(),
-  val creditCards: List<CreditCard> = emptyList()
+    val id: Int? = null,
+    val name: String,
+    val cashHoldings: List<Cash> = emptyList(),
+    val stockHoldings: List<Stock> = emptyList(),
+    val etfHoldings: List<Etf> = emptyList(),
+    val creditCards: List<CreditCard> = emptyList()
 )

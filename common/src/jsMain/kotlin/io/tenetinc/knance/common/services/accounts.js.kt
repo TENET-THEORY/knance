@@ -17,9 +17,7 @@ class AccountsViewModel {
       GlobalScope.promise { io.tenetinc.knance.common.services.fetchAccountsWithHoldings() }
 
   fun fetchAccount(accountId: Int): Promise<Account> =
-      GlobalScope.promise {
-        io.tenetinc.knance.common.services.fetchAccount(accountId = accountId)
-      }
+      GlobalScope.promise { io.tenetinc.knance.common.services.fetchAccount(accountId = accountId) }
 
   fun createEtf(accountId: Int, request: CreateEtfRequest): Promise<Etf> =
       GlobalScope.promise { io.tenetinc.knance.common.services.createEtf(accountId, request) }

@@ -9,19 +9,18 @@ import io.tenetinc.knance.marketdata.model.Quote
 import java.sql.Timestamp
 
 class AlphaVantageMarketDataClient(private val apiKey: String, private val httpClient: HttpClient) :
-  MarketDataClient {
+    MarketDataClient {
 
   override suspend fun getQuotes(symbols: List<String>): List<Quote> {
     return getBulkQuotes(symbols).data.map {
       try {
         with(it) {
           Quote(
-            symbol = symbol,
-            price = extendedHoursQuote.toFloatOrNull() ?: previousClose.toFloat(),
-            dailyGain = change.toFloatOrNull(),
-            dailyPercentGain = changePercent.toFloatOrNull(),
-            timestamp = Timestamp.valueOf(it.timestamp)
-          )
+              symbol = symbol,
+              price = extendedHoursQuote.toFloatOrNull() ?: previousClose.toFloat(),
+              dailyGain = change.toFloatOrNull(),
+              dailyPercentGain = changePercent.toFloatOrNull(),
+              timestamp = Timestamp.valueOf(it.timestamp))
         }
       } catch (e: Exception) {
         println("Failed to parse quote for symbol $e")

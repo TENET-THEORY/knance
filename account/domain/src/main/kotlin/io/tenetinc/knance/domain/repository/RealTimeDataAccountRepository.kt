@@ -12,9 +12,9 @@ import io.tenetinc.knance.marketdata.repository.MarketDataRepository
 import kotlin.collections.find
 
 class RealTimeDataAccountRepository(
-  accountDataStore: AccountDataStore,
-  private val marketDataRepository: MarketDataRepository,
-  private val exchangeRateRepository: ExchangeRateRepository
+    accountDataStore: AccountDataStore,
+    private val marketDataRepository: MarketDataRepository,
+    private val exchangeRateRepository: ExchangeRateRepository
 ) : AccountRepository(accountDataStore = accountDataStore) {
 
   override suspend fun findById(id: Int): Account? {

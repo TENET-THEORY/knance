@@ -23,12 +23,11 @@ class AlphaVantageExchangeRateClient(
   override suspend fun getExchangeRate(fromCurrency: String, toCurrency: String): ExchangeRate {
     if (fromCurrency == toCurrency) {
       return ExchangeRate(
-        fromCurrency = fromCurrency,
-        toCurrency = toCurrency,
-        rate = 1.0f,
-        timestamp = System.currentTimeMillis(),
-        lastRefreshed = ""
-      )
+          fromCurrency = fromCurrency,
+          toCurrency = toCurrency,
+          rate = 1.0f,
+          timestamp = System.currentTimeMillis(),
+          lastRefreshed = "")
     }
 
     val response =
@@ -41,11 +40,10 @@ class AlphaVantageExchangeRateClient(
 
     val data = response.body<CurrencyExchangeRateResponse>()
     return ExchangeRate(
-      fromCurrency = data.exchangeRate.fromCurrencyCode,
-      toCurrency = data.exchangeRate.toCurrencyCode,
-      rate = data.exchangeRate.exchangeRate.toFloat(),
-      timestamp = System.currentTimeMillis(),
-      lastRefreshed = data.exchangeRate.lastRefreshed
-    )
+        fromCurrency = data.exchangeRate.fromCurrencyCode,
+        toCurrency = data.exchangeRate.toCurrencyCode,
+        rate = data.exchangeRate.exchangeRate.toFloat(),
+        timestamp = System.currentTimeMillis(),
+        lastRefreshed = data.exchangeRate.lastRefreshed)
   }
 }

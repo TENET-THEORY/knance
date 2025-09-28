@@ -23,7 +23,9 @@ suspend fun fetchAccount(accountId: Int): io.tenetinc.knance.common.api.model.Ac
   return client.get("/accounts/${accountId}").body()
 }
 
-suspend fun createAccount(request: io.tenetinc.knance.common.api.model.CreateAccountRequest): io.tenetinc.knance.common.api.model.Account {
+suspend fun createAccount(
+    request: io.tenetinc.knance.common.api.model.CreateAccountRequest
+): io.tenetinc.knance.common.api.model.Account {
   return client
       .post("/accounts") {
         contentType(ContentType.Application.Json)
@@ -32,7 +34,10 @@ suspend fun createAccount(request: io.tenetinc.knance.common.api.model.CreateAcc
       .body()
 }
 
-suspend fun createEtf(accountId: Int, request: io.tenetinc.knance.common.api.model.CreateEtfRequest): io.tenetinc.knance.common.api.model.security.Etf {
+suspend fun createEtf(
+    accountId: Int,
+    request: io.tenetinc.knance.common.api.model.CreateEtfRequest
+): io.tenetinc.knance.common.api.model.security.Etf {
   return client
       .post("/accounts/${accountId}/etfs") {
         contentType(ContentType.Application.Json)

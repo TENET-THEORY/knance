@@ -42,8 +42,7 @@ class MarketDataRepository(
   }
 
   fun getMarketOpenTime(): Long {
-    val calendar =
-        Calendar.getInstance(TimeZone.getTimeZone("America/New_York"))
+    val calendar = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"))
     calendar.time = Date()
     calendar.set(Calendar.HOUR_OF_DAY, 9)
     calendar.set(Calendar.MINUTE, 30)
@@ -53,8 +52,7 @@ class MarketDataRepository(
   }
 
   fun getMarketCloseTime(): Long {
-    val calendar =
-        Calendar.getInstance(TimeZone.getTimeZone("America/New_York"))
+    val calendar = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"))
     calendar.time = Date()
     calendar.set(Calendar.HOUR_OF_DAY, 16)
     calendar.set(Calendar.MINUTE, 0)
@@ -64,8 +62,7 @@ class MarketDataRepository(
   }
 
   fun getAfterHoursEndTime(): Long {
-    val calendar =
-        Calendar.getInstance(TimeZone.getTimeZone("America/New_York"))
+    val calendar = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"))
     calendar.time = Date()
     calendar.set(Calendar.HOUR_OF_DAY, 20)
     calendar.set(Calendar.MINUTE, 0)
