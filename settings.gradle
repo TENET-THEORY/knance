@@ -17,6 +17,8 @@ rootProject.name = "knance"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
+include("account:domain")
+
 include("market-data:alpha-vantage")
 
 include(":market-data:domain")
