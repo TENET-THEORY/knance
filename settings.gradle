@@ -21,6 +21,8 @@ include("account:domain")
 
 include("account:exposed")
 
+include(":common")
+
 include("market-data:alpha-vantage")
 
 include(":market-data:domain")
