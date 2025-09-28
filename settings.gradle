@@ -27,3 +27,5 @@ include("market-data:alpha-vantage")
 
 include(":market-data:domain")
 
+include(":ktor")
+

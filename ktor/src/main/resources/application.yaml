@@ -1,0 +1,15 @@
+ktor:
+  development: true
+  application:
+    modules:
+      - io.tenetinc.finance.ktor.ApplicationKt.module
+  deployment:
+    port: 8080
+postgres:
+  url: $FINANCE_DB_URL
+  user: $FINANCE_DB_USER
+  password: $FINANCE_DB_PASSWORD
+alphavantage:
+  apikey: $ALPHA_VANTAGE_API_KEY
+openai:
+  apikey: $OPEN_AI_API_KEY
