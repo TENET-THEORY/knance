@@ -1,0 +1,14 @@
+{
+  "name": "knance",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "next",
+    "common/build/dist/js/productionLibrary"
+  ],
+  "scripts": {
+    "start:api": "./gradlew :ktor:run",
+    "start:next": "npm run build:common && npm run dev --workspace=next",
+    "build:common": "./gradlew :common:jsBrowserProductionLibraryDistribution"
+  }
+}
