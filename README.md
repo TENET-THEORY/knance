@@ -12,5 +12,6 @@
 
 - Since this uses the Alpha Vantage bulk quote API, you will need a premium API key.
 - This project also uses Open AI to distinguish between different etf types. So you will need to set an Open AI API key.
+- See the application.yaml file for the environment variables that need to be set.
 - You will need to create a database to connect to with the tables shown in the mapping file
 - After the keys and database are set up, you can start the project using the commands in the package.json file
