@@ -15,7 +15,7 @@ export default function Navigation() {
               href="/"
               className="flex items-center px-4 py-2 text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              Finance
+              knance
             </Link>
           </div>
 
