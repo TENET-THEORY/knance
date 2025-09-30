@@ -1,5 +1,7 @@
 # knance
 
+![screenshot.png](screenshot.png)
+
 ## Overview
 
 - I've personally been using this project to track my investments across different accounts 
