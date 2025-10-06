@@ -20,6 +20,7 @@ class RealTimeDataLiveAccountRepository(
 ) {
 
   fun allAccountsWithHoldings(): Flow<AllAccountsWithHoldingsMessage> = flow {
+    emit(AllAccountsWithHoldingsLoadingFromDatabaseMessage)
     val allAccountsWithoutMarketData = accountDataStore.allAccountsWithHoldings()
     emit(AllAccountsWithHoldingsWithoutMarketDataMessage(allAccountsWithoutMarketData))
     val accountsWithMarketData = mutableListOf<Account>()
