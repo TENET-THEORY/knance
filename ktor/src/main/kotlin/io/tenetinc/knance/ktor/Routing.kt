@@ -7,6 +7,7 @@ import io.ktor.server.plugins.calllogging.CallLogging
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.routing.routing
 import io.tenetinc.knance.domain.repository.AccountRepository
+import io.tenetinc.knance.domain.repository.RealTimeDataLiveAccountRepository
 import io.tenetinc.knance.ktor.ai.FinanceClassifier
 import io.tenetinc.knance.ktor.csv.CsvUploadService
 import io.tenetinc.knance.ktor.routes.accountsRoutes
@@ -15,6 +16,7 @@ import io.tenetinc.knance.ktor.routes.ws.sockets
 
 fun Application.configureRouting(
   accountRepository: AccountRepository,
+  realTimeDataLiveAccountRepository: RealTimeDataLiveAccountRepository,
   financeClassifier: FinanceClassifier
 ) {
   install(CallLogging)
@@ -23,6 +25,6 @@ fun Application.configureRouting(
   routing {
     accountsRoutes(accountRepository)
     uploadRoutes(csvUploadService)
-    sockets(accountRepository)
+    sockets(realTimeDataLiveAccountRepository)
   }
 }

@@ -15,12 +15,14 @@ import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.AlphaVantageEx
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.AlphaVantageMarketDataClient
 import io.tenetinc.knance.common.services.createClient
 import io.tenetinc.knance.domain.repository.RealTimeDataAccountRepository
+import io.tenetinc.knance.domain.repository.RealTimeDataLiveAccountRepository
 import io.tenetinc.knance.exposed.configureDatabase
 import io.tenetinc.knance.exposed.datastore.AccountExposedDataStore
 import io.tenetinc.knance.ktor.ai.LlmFinanceClassifier
 import io.tenetinc.knance.marketdata.datastore.MarketDataRamDataStore
 import io.tenetinc.knance.marketdata.repository.ExchangeRateRepository
 import io.tenetinc.knance.marketdata.repository.MarketDataRepository
+import io.tenetinc.knance.marketdata.repository.live.MarketDataLiveRepository
 import kotlinx.serialization.json.Json
 import kotlin.time.Duration.Companion.seconds
 
@@ -77,5 +79,16 @@ fun Application.module() {
     maxFrameSize = Long.MAX_VALUE
     masking = false
   }
-  configureRouting(accountRepository, llmFinanceClassifier)
+  configureRouting(
+    accountRepository = accountRepository,
+    realTimeDataLiveAccountRepository = RealTimeDataLiveAccountRepository(
+      accountDataStore = accountExposedDataStore,
+      marketDataLiveRepository = MarketDataLiveRepository(
+        marketDataClient = marketDataClient,
+        marketDataStore = marketDataDataStore
+      ),
+      exchangeRateRepository = exchangeRateRepository
+    ),
+    financeClassifier = llmFinanceClassifier
+  )
 }
