@@ -12,10 +12,14 @@ fun Route.sockets(accountRepository: RealTimeDataLiveAccountRepository) {
 
   // send holdings
   webSocket("/accounts/full") {
-    val accounts = accountRepository.allAccountsWithHoldings().collect {
+    try {
+      accountRepository.allAccountsWithHoldings().collect { message ->
+        val serializedMessage = message.toSerializable()
+        sendSerialized(serializedMessage)
+      }
+    } catch (e: Exception) {
+      println("WebSocket error: $e")
+      close()
     }
-    val serializedAccounts = accounts.map { it.toSerializable() }
-    sendSerialized(serializedAccounts)
-    close()
   }
 }
