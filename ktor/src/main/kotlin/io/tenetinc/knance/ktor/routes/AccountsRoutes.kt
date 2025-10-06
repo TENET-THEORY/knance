@@ -29,7 +29,8 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
     get("/full") {
       try {
         val accounts = accountRepository.allAccountsWithHoldings()
-        call.respond(accounts.map { it.toSerializable() })
+        val serializedAccounts = accounts.map { it.toSerializable() }
+        call.respond(serializedAccounts)
       } catch (e: Exception) {
         println("Failed to fetch accounts")
         println(e)

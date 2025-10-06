@@ -1,19 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import PortfolioHeader from "../pure/PortfolioHeader";
 import SecurityHoldingsTable from "@/components/client/SecurityHoldingsTable";
 import { mapSecurityToHolding } from "@/types/mappers";
 import CashHoldingsTable from "@/components/account/cash/pure/CashHoldingsTable";
 
 interface CombinedHoldingsClientProps {
-  initialAccounts: Account[];
+  accounts: Account[];
 }
 
 export default function CombinedHoldingsClient({
-  initialAccounts,
+  accounts,
 }: CombinedHoldingsClientProps) {
-  const [accounts] = useState<Account[]>(initialAccounts);
 
   function updateHolding(existing: Holding, security: Security) {
     existing.quantity += security.quantity;

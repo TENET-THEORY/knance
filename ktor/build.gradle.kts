@@ -21,4 +21,5 @@ dependencies {
   implementation(libs.ktor.server.netty)
   implementation(libs.ktor.serialization.json)
   implementation(libs.logback.classic)
+  implementation(libs.ktor.server.websockets)
 }
