@@ -5,16 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @JsExport
-sealed class AllAccountsWithHoldingsMessage
-
-@Serializable
-@JsExport
-data class AllAccountsWithHoldingsWithoutMarketDataMessage(val accounts: List<Account>) : AllAccountsWithHoldingsMessage()
-
-@Serializable
-@JsExport
-data class AllAccountsWithHoldingsBulkQuoteMessage(val bulkQuoteMessage: BulkQuoteMessage) : AllAccountsWithHoldingsMessage()
-
-@Serializable
-@JsExport
-data class AllAccountsWithMarketDataHoldingsMessage(val accounts: List<Account>) : AllAccountsWithHoldingsMessage()
+data class AllAccountsWithHoldingsMessage(
+    val type: String,
+    val accounts: List<Account>? = null,
+    val bulkQuoteMessage: BulkQuoteMessage? = null
+)

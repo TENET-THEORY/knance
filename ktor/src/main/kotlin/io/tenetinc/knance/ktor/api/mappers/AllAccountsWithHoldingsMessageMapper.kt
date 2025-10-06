@@ -7,16 +7,19 @@ typealias SerializableAllAccountsWithHoldingsMessage = io.tenetinc.knance.common
 fun AllAccountsWithHoldingsMessage.toSerializable(): SerializableAllAccountsWithHoldingsMessage {
     return when (this) {
         is io.tenetinc.knance.domain.repository.AllAccountsWithHoldingsWithoutMarketDataMessage -> 
-            io.tenetinc.knance.common.api.model.AllAccountsWithHoldingsWithoutMarketDataMessage(
-                accounts.map { it.toSerializable() }
+            io.tenetinc.knance.common.api.model.AllAccountsWithHoldingsMessage(
+                type = "AllAccountsWithHoldingsWithoutMarketDataMessage",
+                accounts = accounts.map { it.toSerializable() }
             )
         is io.tenetinc.knance.domain.repository.AllAccountsWithHoldingsBulkQuoteMessage -> 
-            io.tenetinc.knance.common.api.model.AllAccountsWithHoldingsBulkQuoteMessage(
-                bulkQuoteMessage.toSerializable()
+            io.tenetinc.knance.common.api.model.AllAccountsWithHoldingsMessage(
+                type = "AllAccountsWithHoldingsBulkQuoteMessage",
+                bulkQuoteMessage = bulkQuoteMessage.toSerializable()
             )
         is io.tenetinc.knance.domain.repository.AllAccountsWithMarketDataHoldingsMessage -> 
-            io.tenetinc.knance.common.api.model.AllAccountsWithMarketDataHoldingsMessage(
-                accounts.map { it.toSerializable() }
+            io.tenetinc.knance.common.api.model.AllAccountsWithHoldingsMessage(
+                type = "AllAccountsWithMarketDataHoldingsMessage",
+                accounts = accounts.map { it.toSerializable() }
             )
     }
 }

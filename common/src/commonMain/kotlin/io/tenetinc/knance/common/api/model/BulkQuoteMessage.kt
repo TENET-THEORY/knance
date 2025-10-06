@@ -5,20 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @JsExport
-sealed class BulkQuoteMessage
-
-@Serializable
-@JsExport
-object LoadingCachedQuotes : BulkQuoteMessage()
-
-@Serializable
-@JsExport
-data class LoadedCachedQuotes(val quotes: List<Quote>) : BulkQuoteMessage()
-
-@Serializable
-@JsExport
-data class SymbolsToRefresh(val symbols: List<String>) : BulkQuoteMessage()
-
-@Serializable
-@JsExport
-data class UpdatedQuotes(val quotes: List<Quote>) : BulkQuoteMessage()
+data class BulkQuoteMessage(
+    val type: String,
+    val quotes: List<Quote>? = null,
+    val symbols: List<String>? = null
+)
