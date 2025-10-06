@@ -3,6 +3,7 @@ package io.tenetinc.knance.ktor
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.serialization.kotlinx.KotlinxWebsocketSerializationConverter
+import io.ktor.serialization.kotlinx.json.DefaultJson
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.plugins.cors.routing.CORS
@@ -70,9 +71,7 @@ fun Application.module() {
     anyHost()
   }
   install(WebSockets) {
-    contentConverter = KotlinxWebsocketSerializationConverter(Json {
-      encodeDefaults = true
-    })
+    contentConverter = KotlinxWebsocketSerializationConverter(DefaultJson)
     pingPeriod = 15.seconds
     timeout = 15.seconds
     maxFrameSize = Long.MAX_VALUE
