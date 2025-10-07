@@ -45,7 +45,7 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
               account?.let { call.respond(it.toSerializable()) }
                   ?: call.respond(HttpStatusCode.NotFound)
             }
-            .onFailure { error ->
+            .onFailure { _ ->
               call.respond(HttpStatusCode.BadRequest, "Invalid account ID format $accountId")
             }
       } ?: call.respond(HttpStatusCode.BadRequest, "Account ID is required")
