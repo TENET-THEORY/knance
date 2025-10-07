@@ -1,6 +1,8 @@
 package io.tenetinc.knance.domain.repository
 
 import io.tenetinc.knance.domain.datastore.AccountDataStore
+import io.tenetinc.knance.domain.ext.addQuoteData
+import io.tenetinc.knance.domain.ext.addUsdValue
 import io.tenetinc.knance.domain.model.Account
 import io.tenetinc.knance.domain.model.Cash
 import io.tenetinc.knance.domain.model.security.ETF
@@ -32,28 +34,9 @@ class RealTimeDataAccountRepository(
       return copy(
           stockHoldings = stockHoldings.map { it.addQuoteData(bulkQuotes) },
           etfHoldings = etfHoldings.map { it.addQuoteData(bulkQuotes) },
-          cashHoldings = cashHoldings.map { it.addUsdValue() })
+          cashHoldings = cashHoldings.map { it.addUsdValue(exchangeRateRepository) })
     } catch (e: Exception) {
       throw Exception("Failed to fetch stock quotes for account $id", e)
     }
-  }
-
-  private suspend fun Cash.addUsdValue(): Cash {
-    if (currency == "USD") {
-      return this.copy(usdValue = amount)
-    }
-    val exchangeRate =
-        exchangeRateRepository.getExchangeRate(fromCurrency = currency, toCurrency = "USD")
-    return copy(usdValue = amount * exchangeRate.rate)
-  }
-
-  private fun Stock.addQuoteData(bulkQuotes: List<Quote>): Stock {
-    val quote = bulkQuotes.find { it.symbol == symbol }
-    return quote?.let { copy(priceData = createPriceData(it)) } ?: this
-  }
-
-  private fun ETF.addQuoteData(bulkQuotes: List<Quote>): ETF {
-    val quote = bulkQuotes.find { it.symbol == symbol }
-    return quote?.let { copy(priceData = createPriceData(it)) } ?: this
   }
 }

@@ -64,3 +64,24 @@ interface Account {
   etfHoldings: Etf[];
   creditCards: CreditCard[];
 }
+
+// WebSocket Message Types
+interface Quote {
+  symbol: string;
+  price: number;
+  dailyGain: number | null;
+  dailyPercentGain: number | null;
+  timestamp: string;
+}
+
+interface BulkQuoteMessage {
+  type: string;
+  quotes: Quote[] | null;
+  symbols: string[] | null;
+}
+
+interface AllAccountsWithHoldingsMessage {
+  type: string;
+  accounts: Account[] | null;
+  bulkQuoteMessage: BulkQuoteMessage | null;
+}
