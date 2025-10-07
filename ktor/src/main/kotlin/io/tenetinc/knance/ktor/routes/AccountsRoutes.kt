@@ -84,7 +84,6 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
                         quantity = request.quantity,
                         costBasis = request.costBasis,
                         assetType = assetType)
-
                 val savedEtf = accountRepository.saveETF(id, etf)
                 call.respond(HttpStatusCode.Created, savedEtf.toSerializable())
               } catch (e: Exception) {
