@@ -98,7 +98,7 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
                 call.respond(HttpStatusCode.InternalServerError, "Failed to create ETF")
               }
             }
-            .onFailure { error ->
+            .onFailure { _ ->
               call.respond(HttpStatusCode.BadRequest, "Invalid account ID format $accountId")
             }
       } ?: call.respond(HttpStatusCode.BadRequest, "Account ID is required")
