@@ -3,6 +3,7 @@ package io.tenetinc.knance.domain.repository
 import io.tenetinc.knance.domain.datastore.AccountDataStore
 import io.tenetinc.knance.domain.model.Account
 import io.tenetinc.knance.domain.model.Assets
+import io.tenetinc.knance.domain.model.Cash
 import io.tenetinc.knance.domain.model.security.ETF
 
 open class AccountRepository(private val accountDataStore: AccountDataStore) {
@@ -24,6 +25,10 @@ open class AccountRepository(private val accountDataStore: AccountDataStore) {
 
   suspend fun saveETF(accountId: Int, etf: ETF): ETF {
     return accountDataStore.saveETF(accountId, etf)
+  }
+
+  suspend fun saveCash(accountId: Int, cash: Cash): Cash {
+    return accountDataStore.saveCash(accountId, cash)
   }
 
   suspend fun syncAssets(

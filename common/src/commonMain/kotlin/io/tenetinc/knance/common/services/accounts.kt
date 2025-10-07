@@ -45,3 +45,15 @@ suspend fun createEtf(
       }
       .body()
 }
+
+suspend fun createCash(
+    accountId: Int,
+    request: io.tenetinc.knance.common.api.model.CreateCashRequest
+): io.tenetinc.knance.common.api.model.Cash {
+  return client
+      .post("/accounts/${accountId}/cash") {
+        contentType(ContentType.Application.Json)
+        setBody(request)
+      }
+      .body()
+}

@@ -29,6 +29,15 @@ export default function AccountPageClient({
     }
   };
 
+  const handleCashAdded = async () => {
+    try {
+      const updatedAccount = await vm.fetchAccount(accountId);
+      setAccount(mapAccount(updatedAccount));
+    } catch (error) {
+      console.error("Failed to refresh account data:", error);
+    }
+  };
+
   const stockHoldings = account.stockHoldings.map(
     (security: Stock): Holding => mapSecurityToHolding(security),
   );
@@ -46,6 +55,7 @@ export default function AccountPageClient({
           accountName={account.name}
           accountId={accountId}
           onEtfAdded={handleEtfAdded}
+          onCashAdded={handleCashAdded}
         />
         <PortfolioSummary account={account} />
         <div className="space-y-8">

@@ -2,21 +2,25 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import AddCashModal from "../cash/client/AddCashModal";
 import AddEtfModal from "../etf/client/AddEtfModal";
 
 interface AccountHeaderProps {
   accountName: string;
   accountId: number;
   onEtfAdded: () => void;
+  onCashAdded: () => void;
 }
 
 export default function AccountHeader({
   accountName,
   accountId,
   onEtfAdded,
+  onCashAdded,
 }: AccountHeaderProps) {
   const router = useRouter();
   const [isAddEtfModalOpen, setIsAddEtfModalOpen] = useState(false);
+  const [isAddCashModalOpen, setIsAddCashModalOpen] = useState(false);
 
   return (
     <div className="flex justify-between items-center mb-8">
@@ -32,7 +36,10 @@ export default function AccountHeader({
         </h1>
       </div>
       <div className="flex gap-3">
-        <button className="bg-blue-600 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-800 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+        <button
+          onClick={() => setIsAddCashModalOpen(true)}
+          className="bg-blue-600 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-800 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+        >
           Add Cash
         </button>
         <button
@@ -49,6 +56,12 @@ export default function AccountHeader({
         </button>
       </div>
 
+      <AddCashModal
+        isOpen={isAddCashModalOpen}
+        onClose={() => setIsAddCashModalOpen(false)}
+        accountId={accountId}
+        onCashAdded={onCashAdded}
+      />
       <AddEtfModal
         isOpen={isAddEtfModalOpen}
         onClose={() => setIsAddEtfModalOpen(false)}

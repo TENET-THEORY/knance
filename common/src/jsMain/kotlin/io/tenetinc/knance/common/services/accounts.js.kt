@@ -1,7 +1,9 @@
 package io.tenetinc.knance.common.services
 
 import io.tenetinc.knance.common.api.model.Account
+import io.tenetinc.knance.common.api.model.Cash
 import io.tenetinc.knance.common.api.model.CreateAccountRequest
+import io.tenetinc.knance.common.api.model.CreateCashRequest
 import io.tenetinc.knance.common.api.model.CreateEtfRequest
 import io.tenetinc.knance.common.api.model.security.Etf
 import kotlin.js.Promise
@@ -24,4 +26,7 @@ class AccountsViewModel {
 
   fun createAccount(request: CreateAccountRequest): Promise<Account> =
       GlobalScope.promise { io.tenetinc.knance.common.services.createAccount(request) }
+
+  fun createCash(accountId: Int, request: CreateCashRequest): Promise<Cash> =
+      GlobalScope.promise { io.tenetinc.knance.common.services.createCash(accountId, request) }
 }
