@@ -50,7 +50,6 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
             }
       } ?: call.respond(HttpStatusCode.BadRequest, "Account ID is required")
     }
-
     post {
       try {
         val request = call.receive<CreateAccountRequest>()
@@ -58,7 +57,6 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
           call.respond(HttpStatusCode.BadRequest, "Account name cannot be empty")
           return@post
         }
-
         val account = accountRepository.createAccount(request.name)
         call.respond(HttpStatusCode.Created, account.toSerializable())
       } catch (e: Exception) {
@@ -67,7 +65,6 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
         call.respond(HttpStatusCode.InternalServerError, "Failed to create account")
       }
     }
-
     post("/{accountId}/etfs") {
       call.parameters["accountId"]?.let { accountId ->
         runCatching { accountId.toInt() }
@@ -81,7 +78,6 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
                               HttpStatusCode.BadRequest, "Invalid asset type: ${request.assetType}")
                           return@post
                         }
-
                 val etf =
                     ETF(
                         symbol = request.symbol,
