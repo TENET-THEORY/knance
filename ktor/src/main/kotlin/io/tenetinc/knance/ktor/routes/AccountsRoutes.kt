@@ -58,7 +58,7 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
           call.respond(HttpStatusCode.BadRequest, "Account name cannot be empty")
           return@post
         }
-        
+
         val account = accountRepository.createAccount(request.name)
         call.respond(HttpStatusCode.Created, account.toSerializable())
       } catch (e: Exception) {
@@ -83,12 +83,11 @@ fun Route.accountsRoutes(accountRepository: AccountRepository) {
                         }
 
                 val etf =
-                  ETF(
-                    symbol = request.symbol,
-                    quantity = request.quantity,
-                    costBasis = request.costBasis,
-                    assetType = assetType
-                  )
+                    ETF(
+                        symbol = request.symbol,
+                        quantity = request.quantity,
+                        costBasis = request.costBasis,
+                        assetType = assetType)
 
                 val savedEtf = accountRepository.saveETF(id, etf)
                 call.respond(HttpStatusCode.Created, savedEtf.toSerializable())

@@ -7,11 +7,10 @@ import io.tenetinc.knance.domain.model.security.Stock
 import io.tenetinc.knance.ktor.CsvFileData
 import io.tenetinc.knance.ktor.ai.FinanceClassifier
 
-
 abstract class CsvProcessor(
-  protected val financeClassifier: FinanceClassifier,
-  private val csvFileData: CsvFileData,
-  private val csvType: CsvType
+    protected val financeClassifier: FinanceClassifier,
+    private val csvFileData: CsvFileData,
+    private val csvType: CsvType
 ) {
 
   protected val content = csvFileData.content
@@ -34,9 +33,9 @@ abstract class CsvProcessor(
   abstract suspend fun findAssets(): Assets
 
   protected suspend fun extractPositions(
-    stocks: MutableList<Stock>,
-    etfs: MutableList<ETF>,
-    cashPositions: MutableList<Cash>
+      stocks: MutableList<Stock>,
+      etfs: MutableList<ETF>,
+      cashPositions: MutableList<Cash>
   ) {
     portfolioLines.forEach { line ->
       if (line.isNotBlank()) {
@@ -70,9 +69,9 @@ abstract class CsvProcessor(
   }
 
   protected abstract suspend fun processPosition(
-    row: Map<String, String>,
-    stocks: MutableList<Stock>,
-    etfs: MutableList<ETF>,
-    cashPositions: MutableList<Cash>
+      row: Map<String, String>,
+      stocks: MutableList<Stock>,
+      etfs: MutableList<ETF>,
+      cashPositions: MutableList<Cash>
   )
 }

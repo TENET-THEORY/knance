@@ -5,10 +5,9 @@ import io.tenetinc.knance.domain.repository.AccountRepository
 import io.tenetinc.knance.ktor.CsvFileData
 import io.tenetinc.knance.ktor.ai.FinanceClassifier
 
-
 class CsvUploadService(
-  private val accountRepository: AccountRepository,
-  private val financeClassifier: FinanceClassifier
+    private val accountRepository: AccountRepository,
+    private val financeClassifier: FinanceClassifier
 ) {
 
   suspend fun uploadIbkrPositions(csvFileData: CsvFileData): UploadResponse {
@@ -17,8 +16,7 @@ class CsvUploadService(
       csvProcessor.previewFileData()
       if (csvProcessor.isValidCsv().not()) {
         return UploadResponse(
-          false, "Invalid IBKR CSV format: missing Portfolio or Cash Balances section"
-        )
+            false, "Invalid IBKR CSV format: missing Portfolio or Cash Balances section")
       }
       val assets = csvProcessor.findAssets()
       accountRepository.syncAssets(accountName = "IBKR", assets = assets)

@@ -5,18 +5,17 @@ import io.tenetinc.knance.domain.ext.addQuoteData
 import io.tenetinc.knance.domain.ext.addUsdValue
 import io.tenetinc.knance.domain.model.Account
 import io.tenetinc.knance.marketdata.repository.ExchangeRateRepository
-import io.tenetinc.knance.marketdata.repository.live.BulkQuoteMessage
 import io.tenetinc.knance.marketdata.repository.live.MarketDataLiveRepository
 import io.tenetinc.knance.marketdata.repository.live.UpdatedQuotes
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlin.collections.map
 import kotlin.collections.plus
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class RealTimeDataLiveAccountRepository(
-  private val accountDataStore: AccountDataStore,
-  private val marketDataLiveRepository: MarketDataLiveRepository,
-  private val exchangeRateRepository: ExchangeRateRepository
+    private val accountDataStore: AccountDataStore,
+    private val marketDataLiveRepository: MarketDataLiveRepository,
+    private val exchangeRateRepository: ExchangeRateRepository
 ) {
 
   fun allAccountsWithHoldings(): Flow<AllAccountsWithHoldingsMessage> = flow {
@@ -31,11 +30,12 @@ class RealTimeDataLiveAccountRepository(
           marketDataLiveRepository.getBulkQuotes(securitySymbols).collect { bulkQuotesMessage ->
             emit(AllAccountsWithHoldingsBulkQuoteMessage(bulkQuotesMessage))
             if (bulkQuotesMessage is UpdatedQuotes) {
-              val accountWithMarketData = account.copy(
-                stockHoldings = stockHoldings.map { it.addQuoteData(bulkQuotesMessage.quotes) },
-                etfHoldings = etfHoldings.map { it.addQuoteData(bulkQuotesMessage.quotes) },
-                cashHoldings = cashHoldings.map { it.addUsdValue(exchangeRateRepository) }
-              )
+              val accountWithMarketData =
+                  account.copy(
+                      stockHoldings =
+                          stockHoldings.map { it.addQuoteData(bulkQuotesMessage.quotes) },
+                      etfHoldings = etfHoldings.map { it.addQuoteData(bulkQuotesMessage.quotes) },
+                      cashHoldings = cashHoldings.map { it.addUsdValue(exchangeRateRepository) })
               accountsWithMarketData.add(accountWithMarketData)
             }
           }

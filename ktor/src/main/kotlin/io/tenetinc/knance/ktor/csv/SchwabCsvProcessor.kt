@@ -8,8 +8,8 @@ import io.tenetinc.knance.ktor.CsvFileData
 import io.tenetinc.knance.ktor.ai.FinanceClassifier
 
 class SchwabCsvProcessor(
-  financeClassifier: FinanceClassifier,
-  csvFileData: CsvFileData,
+    financeClassifier: FinanceClassifier,
+    csvFileData: CsvFileData,
 ) :
     CsvProcessor(
         financeClassifier = financeClassifier,
@@ -56,7 +56,7 @@ class SchwabCsvProcessor(
     if (securityType == "ETFs & Closed End Funds") {
       val assetType = financeClassifier.classifyAssetType(symbol)
       val etf =
-        ETF(symbol = symbol, quantity = quantity, costBasis = costBasis, assetType = assetType)
+          ETF(symbol = symbol, quantity = quantity, costBasis = costBasis, assetType = assetType)
       etfs.add(etf)
     } else if (securityType == "Equity") {
       val stock = Stock(symbol = symbol, quantity = quantity, costBasis = costBasis)

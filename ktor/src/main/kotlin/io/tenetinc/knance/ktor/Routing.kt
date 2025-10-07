@@ -15,9 +15,9 @@ import io.tenetinc.knance.ktor.routes.uploadRoutes
 import io.tenetinc.knance.ktor.routes.ws.sockets
 
 fun Application.configureRouting(
-  accountRepository: AccountRepository,
-  realTimeDataLiveAccountRepository: RealTimeDataLiveAccountRepository,
-  financeClassifier: FinanceClassifier
+    accountRepository: AccountRepository,
+    realTimeDataLiveAccountRepository: RealTimeDataLiveAccountRepository,
+    financeClassifier: FinanceClassifier
 ) {
   install(CallLogging)
   install(ContentNegotiation) { json() }

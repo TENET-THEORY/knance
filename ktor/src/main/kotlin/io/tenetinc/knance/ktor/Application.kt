@@ -23,7 +23,6 @@ import io.tenetinc.knance.marketdata.datastore.MarketDataRamDataStore
 import io.tenetinc.knance.marketdata.repository.ExchangeRateRepository
 import io.tenetinc.knance.marketdata.repository.MarketDataRepository
 import io.tenetinc.knance.marketdata.repository.live.MarketDataLiveRepository
-import kotlinx.serialization.json.Json
 import kotlin.time.Duration.Companion.seconds
 
 fun main(args: Array<String>) {
@@ -32,39 +31,32 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
   val accountExposedDataStore = AccountExposedDataStore()
-  val marketDataClient = AlphaVantageMarketDataClient(
-    apiKey = environment.config.property("alphavantage.apikey").getString(),
-    httpClient = createClient(urlString = ALPHA_VANTAGE_BASE_URL)
-  )
+  val marketDataClient =
+      AlphaVantageMarketDataClient(
+          apiKey = environment.config.property("alphavantage.apikey").getString(),
+          httpClient = createClient(urlString = ALPHA_VANTAGE_BASE_URL))
   val marketDataDataStore = MarketDataRamDataStore()
   val marketDataRepository =
-    MarketDataRepository(
-      marketDataClient = marketDataClient,
-      marketDataStore = marketDataDataStore
-    )
+      MarketDataRepository(
+          marketDataClient = marketDataClient, marketDataStore = marketDataDataStore)
   val exchangeRateRepository =
-    ExchangeRateRepository(
-      exchangeRateClient =
-        AlphaVantageExchangeRateClient(
-          apiKey = environment.config.property("alphavantage.apikey").getString(),
-          httpClient = createClient(urlString = ALPHA_VANTAGE_BASE_URL)
-        )
-    )
+      ExchangeRateRepository(
+          exchangeRateClient =
+              AlphaVantageExchangeRateClient(
+                  apiKey = environment.config.property("alphavantage.apikey").getString(),
+                  httpClient = createClient(urlString = ALPHA_VANTAGE_BASE_URL)))
   val accountRepository =
-    RealTimeDataAccountRepository(
-      accountDataStore = accountExposedDataStore,
-      marketDataRepository = marketDataRepository,
-      exchangeRateRepository = exchangeRateRepository
-    )
+      RealTimeDataAccountRepository(
+          accountDataStore = accountExposedDataStore,
+          marketDataRepository = marketDataRepository,
+          exchangeRateRepository = exchangeRateRepository)
   configureDatabase(
       url = environment.config.property("postgres.url").getString(),
       user = environment.config.property("postgres.user").getString(),
       password = environment.config.property("postgres.password").getString(),
   )
   val llmFinanceClassifier =
-    LlmFinanceClassifier(
-      aiApiKey = environment.config.property("openai.apikey").getString()
-    )
+      LlmFinanceClassifier(aiApiKey = environment.config.property("openai.apikey").getString())
   install(CORS) {
     allowMethod(HttpMethod.Get)
     allowMethod(HttpMethod.Put)
@@ -80,15 +72,13 @@ fun Application.module() {
     masking = false
   }
   configureRouting(
-    accountRepository = accountRepository,
-    realTimeDataLiveAccountRepository = RealTimeDataLiveAccountRepository(
-      accountDataStore = accountExposedDataStore,
-      marketDataLiveRepository = MarketDataLiveRepository(
-        marketDataClient = marketDataClient,
-        marketDataStore = marketDataDataStore
-      ),
-      exchangeRateRepository = exchangeRateRepository
-    ),
-    financeClassifier = llmFinanceClassifier
-  )
+      accountRepository = accountRepository,
+      realTimeDataLiveAccountRepository =
+          RealTimeDataLiveAccountRepository(
+              accountDataStore = accountExposedDataStore,
+              marketDataLiveRepository =
+                  MarketDataLiveRepository(
+                      marketDataClient = marketDataClient, marketDataStore = marketDataDataStore),
+              exchangeRateRepository = exchangeRateRepository),
+      financeClassifier = llmFinanceClassifier)
 }

@@ -10,6 +10,6 @@ suspend fun Cash.addUsdValue(exchangeRateRepository: ExchangeRateRepository): Ca
     return this.copy(usdValue = amount)
   }
   val exchangeRate =
-    exchangeRateRepository.getExchangeRate(fromCurrency = currency, toCurrency = USD)
+      exchangeRateRepository.getExchangeRate(fromCurrency = currency, toCurrency = USD)
   return copy(usdValue = amount * exchangeRate.rate)
 }

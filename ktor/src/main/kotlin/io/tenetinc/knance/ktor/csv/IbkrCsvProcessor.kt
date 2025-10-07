@@ -7,7 +7,6 @@ import io.tenetinc.knance.domain.model.security.Stock
 import io.tenetinc.knance.ktor.CsvFileData
 import io.tenetinc.knance.ktor.ai.FinanceClassifier
 
-
 class IbkrCsvProcessor(financeClassifier: FinanceClassifier, csvFileData: CsvFileData) :
     CsvProcessor(
         financeClassifier = financeClassifier, csvFileData = csvFileData, csvType = CsvType.IBKR) {
@@ -35,10 +34,10 @@ class IbkrCsvProcessor(financeClassifier: FinanceClassifier, csvFileData: CsvFil
   }
 
   override suspend fun processPosition(
-    row: Map<String, String>,
-    stocks: MutableList<Stock>,
-    etfs: MutableList<ETF>,
-    cashPositions: MutableList<Cash>
+      row: Map<String, String>,
+      stocks: MutableList<Stock>,
+      etfs: MutableList<ETF>,
+      cashPositions: MutableList<Cash>
   ) {
     val symbol = row["Financial Instrument Description"] ?: return
 
@@ -59,7 +58,7 @@ class IbkrCsvProcessor(financeClassifier: FinanceClassifier, csvFileData: CsvFil
     if (securityType == "ETF") {
       val assetType = financeClassifier.classifyAssetType(symbol)
       val etf =
-        ETF(symbol = symbol, quantity = quantity, costBasis = costBasis, assetType = assetType)
+          ETF(symbol = symbol, quantity = quantity, costBasis = costBasis, assetType = assetType)
       etfs.add(etf)
     } else {
       val stock = Stock(symbol = symbol, quantity = quantity, costBasis = costBasis)

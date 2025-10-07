@@ -2,7 +2,6 @@ package io.tenetinc.knance.ktor.ai
 
 import io.tenetinc.knance.domain.model.AssetType
 
-
 interface FinanceClassifier {
   suspend fun classifySecurityType(symbol: String): String
 

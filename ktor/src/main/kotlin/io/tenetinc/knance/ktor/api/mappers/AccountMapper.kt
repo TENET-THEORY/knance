@@ -2,7 +2,6 @@ package io.tenetinc.knance.ktor.api.mappers
 
 import io.tenetinc.knance.domain.model.Account
 
-
 typealias SerializableAccount = io.tenetinc.knance.common.api.model.Account
 
 fun Account.toSerializable(): SerializableAccount {
