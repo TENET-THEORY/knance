@@ -1,6 +1,7 @@
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.kotlinx.serialization)
+  alias(libs.plugins.npm.publish)
 }
 
 version = "0.0.1"
@@ -29,5 +30,13 @@ kotlin {
     }
 
     val jvmMain by getting { dependencies { api(libs.ktor.client.apache) } }
+  }
+}
+
+npmPublish {
+  registries {
+    npmjs {
+      authToken = System.getenv("NPM_TOKEN")
+    }
   }
 }
