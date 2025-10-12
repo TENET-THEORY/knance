@@ -34,6 +34,14 @@ kotlin {
 }
 
 npmPublish {
+  packages {
+    named("js") {
+      packageJson {
+        name = "knance-common-api"
+        version = "0.0.1"
+      }
+    }
+  }
   registries {
     npmjs {
       authToken = System.getenv("NPM_TOKEN")
