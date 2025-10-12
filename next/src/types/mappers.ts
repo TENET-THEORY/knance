@@ -6,7 +6,7 @@ import {
   PriceData as KPriceData,
   CreditCard as KCreditCard,
   Account as KAccount,
-} from "@common/api";
+} from "knance-common-api";
 
 export function mapAccount(account: KAccount): Account {
   return {

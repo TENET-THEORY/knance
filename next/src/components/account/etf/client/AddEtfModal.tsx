@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AccountsViewModel, CreateEtfRequest } from "@common/api";
+import { AccountsViewModel, CreateEtfRequest } from "knance-common-api";
 
 interface AddEtfModalProps {
   isOpen: boolean;

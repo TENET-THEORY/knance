@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AccountsViewModel, CreateAccountRequest } from "@common/api";
+import { AccountsViewModel, CreateAccountRequest } from "knance-common-api";
 
 interface AddAccountModalProps {
   isOpen: boolean;

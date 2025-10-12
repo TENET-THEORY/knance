@@ -1,6 +1,6 @@
 import ErrorMessage from "@/components/common/pure/ErrorMessage";
 import AccountPageClient from "@/components/account/client/AccountPageClient";
-import { AccountsViewModel } from "@common/api";
+import { AccountsViewModel } from "knance-common-api";
 import { mapAccount } from "@/types/mappers";
 
 export default async function Page({
