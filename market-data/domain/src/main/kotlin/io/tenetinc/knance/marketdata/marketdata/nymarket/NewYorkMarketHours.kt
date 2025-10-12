@@ -1,4 +1,4 @@
-package io.tenetinc.knance.marketdata.nymarket
+package io.tenetinc.knance.marketdata.marketdata.nymarket
 
 import java.util.Calendar
 import java.util.Date

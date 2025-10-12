@@ -4,8 +4,8 @@ import io.tenetinc.knance.domain.datastore.AccountDataStore
 import io.tenetinc.knance.domain.ext.addQuoteData
 import io.tenetinc.knance.domain.ext.addUsdValue
 import io.tenetinc.knance.domain.model.Account
-import io.tenetinc.knance.marketdata.repository.ExchangeRateRepository
-import io.tenetinc.knance.marketdata.repository.MarketDataRepository
+import io.tenetinc.knance.marketdata.exchangerate.ExchangeRateRepository
+import io.tenetinc.knance.marketdata.marketdata.MarketDataRepository
 
 class RealTimeDataAccountRepository(
     accountDataStore: AccountDataStore,

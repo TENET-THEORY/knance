@@ -1,4 +1,4 @@
-package io.tenetinc.knance.marketdata.model
+package io.tenetinc.knance.marketdata.marketdata
 
 import java.sql.Timestamp
 

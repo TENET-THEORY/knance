@@ -1,4 +1,4 @@
-package io.tenetinc.knance.marketdata.model
+package io.tenetinc.knance.marketdata.companyoverview
 
 data class CompanyOverview(
     val symbol: String,

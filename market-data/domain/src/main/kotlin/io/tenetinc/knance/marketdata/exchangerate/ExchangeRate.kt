@@ -1,4 +1,4 @@
-package io.tenetinc.knance.marketdata.model
+package io.tenetinc.knance.marketdata.exchangerate
 
 data class ExchangeRate(
     val fromCurrency: String,

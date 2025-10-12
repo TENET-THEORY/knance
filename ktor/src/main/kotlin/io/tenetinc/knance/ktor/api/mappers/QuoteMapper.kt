@@ -1,6 +1,6 @@
 package io.tenetinc.knance.ktor.api.mappers
 
-import io.tenetinc.knance.marketdata.model.Quote
+import io.tenetinc.knance.marketdata.marketdata.Quote
 
 typealias SerializableQuote = io.tenetinc.knance.common.api.model.Quote
 

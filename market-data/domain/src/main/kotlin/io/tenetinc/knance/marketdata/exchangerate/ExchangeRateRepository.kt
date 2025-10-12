@@ -1,7 +1,4 @@
-package io.tenetinc.knance.marketdata.repository
-
-import io.tenetinc.knance.marketdata.client.ExchangeRateClient
-import io.tenetinc.knance.marketdata.model.ExchangeRate
+package io.tenetinc.knance.marketdata.exchangerate
 
 class ExchangeRateRepository(private val exchangeRateClient: ExchangeRateClient) {
 

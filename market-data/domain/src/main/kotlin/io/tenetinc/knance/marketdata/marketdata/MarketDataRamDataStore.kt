@@ -1,6 +1,6 @@
-package io.tenetinc.knance.marketdata.datastore
+package io.tenetinc.knance.marketdata.marketdata
 
-import io.tenetinc.knance.marketdata.model.Quote
+import io.tenetinc.knance.marketdata.marketdata.Quote
 
 class MarketDataRamDataStore : MarketDataDataStore {
 

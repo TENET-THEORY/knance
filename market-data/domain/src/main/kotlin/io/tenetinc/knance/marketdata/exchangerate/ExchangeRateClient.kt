@@ -1,6 +1,6 @@
-package io.tenetinc.knance.marketdata.client
+package io.tenetinc.knance.marketdata.exchangerate
 
-import io.tenetinc.knance.marketdata.model.ExchangeRate
+import io.tenetinc.knance.marketdata.exchangerate.ExchangeRate
 
 interface ExchangeRateClient {
 

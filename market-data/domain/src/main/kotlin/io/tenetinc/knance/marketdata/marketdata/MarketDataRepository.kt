@@ -1,9 +1,6 @@
-package io.tenetinc.knance.marketdata.repository
+package io.tenetinc.knance.marketdata.marketdata
 
-import io.tenetinc.knance.marketdata.client.MarketDataClient
-import io.tenetinc.knance.marketdata.datastore.MarketDataDataStore
-import io.tenetinc.knance.marketdata.model.Quote
-import io.tenetinc.knance.marketdata.nymarket.getSymbolsToRefresh
+import io.tenetinc.knance.marketdata.marketdata.nymarket.getSymbolsToRefresh
 
 class MarketDataRepository(
     private val marketDataClient: MarketDataClient,

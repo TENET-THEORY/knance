@@ -1,10 +1,10 @@
 package io.tenetinc.knance.ktor.api.mappers
 
-import io.tenetinc.knance.marketdata.repository.live.BulkQuoteMessage
-import io.tenetinc.knance.marketdata.repository.live.LoadedCachedQuotes
-import io.tenetinc.knance.marketdata.repository.live.LoadingCachedQuotes
-import io.tenetinc.knance.marketdata.repository.live.SymbolsToRefresh
-import io.tenetinc.knance.marketdata.repository.live.UpdatedQuotes
+import io.tenetinc.knance.marketdata.marketdata.live.BulkQuoteMessage
+import io.tenetinc.knance.marketdata.marketdata.live.LoadedCachedQuotes
+import io.tenetinc.knance.marketdata.marketdata.live.LoadingCachedQuotes
+import io.tenetinc.knance.marketdata.marketdata.live.SymbolsToRefresh
+import io.tenetinc.knance.marketdata.marketdata.live.UpdatedQuotes
 
 typealias SerializableBulkQuoteMessage = io.tenetinc.knance.common.api.model.BulkQuoteMessage
 

@@ -19,10 +19,10 @@ import io.tenetinc.knance.domain.repository.RealTimeDataLiveAccountRepository
 import io.tenetinc.knance.exposed.configureDatabase
 import io.tenetinc.knance.exposed.datastore.AccountExposedDataStore
 import io.tenetinc.knance.ktor.ai.LlmFinanceClassifier
-import io.tenetinc.knance.marketdata.datastore.MarketDataRamDataStore
-import io.tenetinc.knance.marketdata.repository.ExchangeRateRepository
-import io.tenetinc.knance.marketdata.repository.MarketDataRepository
-import io.tenetinc.knance.marketdata.repository.live.MarketDataLiveRepository
+import io.tenetinc.knance.marketdata.marketdata.MarketDataRamDataStore
+import io.tenetinc.knance.marketdata.exchangerate.ExchangeRateRepository
+import io.tenetinc.knance.marketdata.marketdata.MarketDataRepository
+import io.tenetinc.knance.marketdata.marketdata.live.MarketDataLiveRepository
 import kotlin.time.Duration.Companion.seconds
 
 fun main(args: Array<String>) {

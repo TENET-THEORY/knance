@@ -1,7 +1,7 @@
 package io.tenetinc.knance.domain.ext
 
 import io.tenetinc.knance.domain.model.Cash
-import io.tenetinc.knance.marketdata.repository.ExchangeRateRepository
+import io.tenetinc.knance.marketdata.exchangerate.ExchangeRateRepository
 
 const val USD = "USD"
 

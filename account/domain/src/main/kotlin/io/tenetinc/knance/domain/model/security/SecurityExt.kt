@@ -1,6 +1,6 @@
 package io.tenetinc.knance.domain.model.security
 
-import io.tenetinc.knance.marketdata.model.Quote
+import io.tenetinc.knance.marketdata.marketdata.Quote
 
 fun Security.createPriceData(quote: Quote): PriceData {
   val currentPrice = quote.price

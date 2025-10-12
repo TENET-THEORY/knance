@@ -1,6 +1,6 @@
-package io.tenetinc.knance.marketdata.nymarket
+package io.tenetinc.knance.marketdata.marketdata.nymarket
 
-import io.tenetinc.knance.marketdata.model.Quote
+import io.tenetinc.knance.marketdata.marketdata.Quote
 
 fun Quote.needsRefresh(): Boolean {
   val now = System.currentTimeMillis()

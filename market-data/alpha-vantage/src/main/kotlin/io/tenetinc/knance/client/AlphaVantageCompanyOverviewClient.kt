@@ -5,8 +5,8 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.overview.CompanyOverviewResponse
-import io.tenetinc.knance.marketdata.client.CompanyOverviewClient
-import io.tenetinc.knance.marketdata.model.CompanyOverview
+import io.tenetinc.knance.marketdata.companyoverview.CompanyOverviewClient
+import io.tenetinc.knance.marketdata.companyoverview.CompanyOverview
 
 typealias CompanyOverviewApi = io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.overview.CompanyOverview
 

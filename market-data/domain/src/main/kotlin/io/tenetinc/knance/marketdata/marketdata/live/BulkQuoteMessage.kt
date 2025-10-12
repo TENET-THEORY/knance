@@ -1,6 +1,6 @@
-package io.tenetinc.knance.marketdata.repository.live
+package io.tenetinc.knance.marketdata.marketdata.live
 
-import io.tenetinc.knance.marketdata.model.Quote
+import io.tenetinc.knance.marketdata.marketdata.Quote
 
 sealed class BulkQuoteMessage
 

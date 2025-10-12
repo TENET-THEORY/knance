@@ -1,7 +1,7 @@
 package io.tenetinc.knance.domain.repository
 
 import io.tenetinc.knance.domain.model.Account
-import io.tenetinc.knance.marketdata.repository.live.BulkQuoteMessage
+import io.tenetinc.knance.marketdata.marketdata.live.BulkQuoteMessage
 
 sealed class AllAccountsWithHoldingsMessage
 

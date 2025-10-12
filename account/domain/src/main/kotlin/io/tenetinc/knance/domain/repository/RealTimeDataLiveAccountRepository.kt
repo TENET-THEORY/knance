@@ -4,9 +4,9 @@ import io.tenetinc.knance.domain.datastore.AccountDataStore
 import io.tenetinc.knance.domain.ext.addQuoteData
 import io.tenetinc.knance.domain.ext.addUsdValue
 import io.tenetinc.knance.domain.model.Account
-import io.tenetinc.knance.marketdata.repository.ExchangeRateRepository
-import io.tenetinc.knance.marketdata.repository.live.MarketDataLiveRepository
-import io.tenetinc.knance.marketdata.repository.live.UpdatedQuotes
+import io.tenetinc.knance.marketdata.exchangerate.ExchangeRateRepository
+import io.tenetinc.knance.marketdata.marketdata.live.MarketDataLiveRepository
+import io.tenetinc.knance.marketdata.marketdata.live.UpdatedQuotes
 import kotlin.collections.map
 import kotlin.collections.plus
 import kotlinx.coroutines.flow.Flow

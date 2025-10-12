@@ -5,8 +5,8 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.quotes.BulkQuotesResponse
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.quotes.GlobalQuoteResponse
-import io.tenetinc.knance.marketdata.client.MarketDataClient
-import io.tenetinc.knance.marketdata.model.Quote
+import io.tenetinc.knance.marketdata.marketdata.MarketDataClient
+import io.tenetinc.knance.marketdata.marketdata.Quote
 import java.sql.Timestamp
 import java.time.LocalDateTime
 
