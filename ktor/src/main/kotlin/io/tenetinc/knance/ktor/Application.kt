@@ -11,6 +11,7 @@ import io.ktor.server.websocket.WebSockets
 import io.ktor.server.websocket.pingPeriod
 import io.ktor.server.websocket.timeout
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.ALPHA_VANTAGE_BASE_URL
+import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.AlphaVantageCompanyOverviewClient
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.AlphaVantageExchangeRateClient
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.AlphaVantageMarketDataClient
 import io.tenetinc.knance.common.services.createClient
@@ -23,6 +24,8 @@ import io.tenetinc.knance.marketdata.marketdata.MarketDataRamDataStore
 import io.tenetinc.knance.marketdata.exchangerate.ExchangeRateRepository
 import io.tenetinc.knance.marketdata.marketdata.MarketDataRepository
 import io.tenetinc.knance.marketdata.marketdata.live.MarketDataLiveRepository
+import io.tenetinc.knance.marketdata.companyoverview.CompanyOverviewRepository
+import io.tenetinc.knance.marketdata.companyoverview.CompanyOverviewRamDataStore
 import kotlin.time.Duration.Companion.seconds
 
 fun main(args: Array<String>) {
@@ -45,11 +48,19 @@ fun Application.module() {
               AlphaVantageExchangeRateClient(
                   apiKey = environment.config.property("alphavantage.apikey").getString(),
                   httpClient = createClient(urlString = ALPHA_VANTAGE_BASE_URL)))
+  val companyOverviewDataStore = CompanyOverviewRamDataStore()
+  val companyOverviewClient = AlphaVantageCompanyOverviewClient(
+      apiKey = environment.config.property("alphavantage.apikey").getString(),
+      httpClient = createClient(urlString = ALPHA_VANTAGE_BASE_URL))
+  val companyOverviewRepository = CompanyOverviewRepository(
+      companyOverviewClient = companyOverviewClient,
+      companyOverviewStore = companyOverviewDataStore)
   val accountRepository =
       RealTimeDataAccountRepository(
           accountDataStore = accountExposedDataStore,
           marketDataRepository = marketDataRepository,
-          exchangeRateRepository = exchangeRateRepository)
+          exchangeRateRepository = exchangeRateRepository,
+          companyOverviewRepository = companyOverviewRepository)
   configureDatabase(
       url = environment.config.property("postgres.url").getString(),
       user = environment.config.property("postgres.user").getString(),
@@ -79,6 +90,7 @@ fun Application.module() {
               marketDataLiveRepository =
                   MarketDataLiveRepository(
                       marketDataClient = marketDataClient, marketDataStore = marketDataDataStore),
-              exchangeRateRepository = exchangeRateRepository),
+              exchangeRateRepository = exchangeRateRepository,
+              companyOverviewRepository = companyOverviewRepository),
       financeClassifier = llmFinanceClassifier)
 }
