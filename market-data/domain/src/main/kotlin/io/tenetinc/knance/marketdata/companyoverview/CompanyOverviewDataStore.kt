@@ -1,6 +1,5 @@
 package io.tenetinc.knance.marketdata.companyoverview
 
-import io.tenetinc.knance.marketdata.companyoverview.CompanyOverview
 
 interface CompanyOverviewDataStore {
   fun saveCompanyOverviews(companyOverviews: List<CompanyOverview>)

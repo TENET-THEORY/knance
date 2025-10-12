@@ -1,7 +1,5 @@
 package io.tenetinc.knance.marketdata.marketdata
 
-import io.tenetinc.knance.marketdata.marketdata.Quote
-
 class MarketDataRamDataStore : MarketDataDataStore {
 
   var quotesMap: Map<String, Quote> = emptyMap()

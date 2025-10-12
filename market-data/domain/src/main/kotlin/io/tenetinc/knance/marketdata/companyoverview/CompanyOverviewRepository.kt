@@ -19,8 +19,4 @@ class CompanyOverviewRepository(
     
     return cachedOverviews + freshOverviews
   }
-
-  suspend fun getCompanyOverview(symbol: String): CompanyOverview {
-    return getCompanyOverviews(listOf(symbol)).first()
-  }
 }

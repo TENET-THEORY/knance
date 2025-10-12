@@ -1,6 +1,5 @@
 package io.tenetinc.knance.marketdata.companyoverview
 
-import io.tenetinc.knance.marketdata.companyoverview.CompanyOverview
 
 class CompanyOverviewRamDataStore : CompanyOverviewDataStore {
 
