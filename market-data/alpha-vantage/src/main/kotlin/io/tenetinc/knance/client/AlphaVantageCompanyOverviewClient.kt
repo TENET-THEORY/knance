@@ -8,25 +8,29 @@ import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.overview
 import io.tenetinc.knance.marketdata.companyoverview.CompanyOverviewClient
 import io.tenetinc.knance.marketdata.companyoverview.CompanyOverview
 
-typealias CompanyOverviewApi = io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.overview.CompanyOverview
-
 class AlphaVantageCompanyOverviewClient(
   private val apiKey: String,
   private val httpClient: HttpClient
 ) : CompanyOverviewClient {
 
-  override suspend fun getCompanyOverview(symbol: String): CompanyOverview {
+  override suspend fun getCompanyOverview(symbol: String): CompanyOverview? {
     val response = httpClient.get {
       parameter(ParameterKeys.FUNCTION, FunctionValues.OVERVIEW)
       parameter(ParameterKeys.SYMBOL, symbol)
       parameter(ParameterKeys.API_KEY, apiKey)
     }
-    
-    val data = response.body<CompanyOverviewResponse>()
-    return mapToDomainModel(data.companyOverview)
+    runCatching { response.body<CompanyOverviewResponse>() }.apply {
+      onSuccess {
+        return mapToDomainModel(it)
+      }
+      onFailure {
+        return null
+      }
+    }
+    return null
   }
   
-  private fun mapToDomainModel(apiModel: CompanyOverviewApi): CompanyOverview {
+  private fun mapToDomainModel(apiModel: CompanyOverviewResponse): CompanyOverview {
     return CompanyOverview(
       symbol = apiModel.symbol,
       assetType = apiModel.assetType,

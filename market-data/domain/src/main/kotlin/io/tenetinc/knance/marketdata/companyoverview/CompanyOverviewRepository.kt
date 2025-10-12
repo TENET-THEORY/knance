@@ -9,7 +9,7 @@ class CompanyOverviewRepository(
     val cachedOverviews = companyOverviewStore.loadCompanyOverviews(symbols)
     val symbolsToRefresh = if (cachedOverviews.isEmpty()) symbols else cachedOverviews.getSymbolsToRefresh()
     
-    val freshOverviews = symbolsToRefresh.map { symbol ->
+    val freshOverviews = symbolsToRefresh.mapNotNull { symbol ->
       companyOverviewClient.getCompanyOverview(symbol)
     }
     
