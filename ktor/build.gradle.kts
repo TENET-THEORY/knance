@@ -12,6 +12,8 @@ dependencies {
   implementation(projects.common)
   implementation(projects.account.domain)
   implementation(projects.account.exposed)
+  implementation(libs.koin.ktor)
+  implementation(libs.koin.logger)
   implementation(libs.koog)
   implementation(libs.ktor.server.call.logging)
   implementation(libs.ktor.server.core)

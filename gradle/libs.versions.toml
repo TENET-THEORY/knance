@@ -1,5 +1,6 @@
 [versions]
 exposed = "0.61.0"
+koin = "4.1.1"
 koog = "0.4.1"
 kotlin = "2.2.10"
 kotlinx-coroutines = "1.10.2"
@@ -22,6 +23,10 @@ postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "pos
 
 # Kotlin X
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+
+# Koin
+koin-ktor = { group = "io.insert-koin", name = "koin-ktor", version.ref = "koin" }
+koin-logger = { group = "io.insert-koin", name = "koin-logger-slf4j", version.ref = "koin" }
 
 # Ktor
 ktor-client-apache = { module = "io.ktor:ktor-client-apache5", version.ref = "ktor" }

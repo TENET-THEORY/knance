@@ -14,19 +14,29 @@ import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.ALPHA_VANTAGE_
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.AlphaVantageExchangeRateClient
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.AlphaVantageMarketDataClient
 import io.tenetinc.knance.common.services.createClient
+import io.tenetinc.knance.domain.datastore.AccountDataStore
 import io.tenetinc.knance.domain.repository.RealTimeDataAccountRepository
 import io.tenetinc.knance.domain.repository.RealTimeDataLiveAccountRepository
 import io.tenetinc.knance.exposed.configureDatabase
 import io.tenetinc.knance.exposed.datastore.AccountExposedDataStore
 import io.tenetinc.knance.ktor.ai.LlmFinanceClassifier
+import io.tenetinc.knance.marketdata.datastore.MarketDataDataStore
 import io.tenetinc.knance.marketdata.datastore.MarketDataRamDataStore
 import io.tenetinc.knance.marketdata.repository.ExchangeRateRepository
 import io.tenetinc.knance.marketdata.repository.MarketDataRepository
 import io.tenetinc.knance.marketdata.repository.live.MarketDataLiveRepository
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.module
 import kotlin.time.Duration.Companion.seconds
 
 fun main(args: Array<String>) {
   io.ktor.server.netty.EngineMain.main(args)
+}
+
+val appModule = module {
+  singleOf(::AccountExposedDataStore) { bind<AccountDataStore>() }
+  singleOf(::MarketDataRamDataStore) {  bind<MarketDataDataStore>() }
 }
 
 fun Application.module() {
