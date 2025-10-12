@@ -5,6 +5,7 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.overview.CompanyOverviewResponse
+import io.tenetinc.knance.marketdata.client.CompanyOverviewClient
 import io.tenetinc.knance.marketdata.model.CompanyOverview
 
 typealias CompanyOverviewApi = io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.overview.CompanyOverview
@@ -12,9 +13,9 @@ typealias CompanyOverviewApi = io.tenetinc.finance.alphavantage.io.tenetinc.knan
 class AlphaVantageCompanyOverviewClient(
   private val apiKey: String,
   private val httpClient: HttpClient
-) {
+) : CompanyOverviewClient {
 
-  suspend fun getCompanyOverview(symbol: String): CompanyOverview {
+  override suspend fun getCompanyOverview(symbol: String): CompanyOverview {
     val response = httpClient.get {
       parameter(ParameterKeys.FUNCTION, FunctionValues.OVERVIEW)
       parameter(ParameterKeys.SYMBOL, symbol)
