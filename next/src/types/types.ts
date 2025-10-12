@@ -13,12 +13,13 @@ interface Security {
   quantity: number;
   costBasis: number;
   priceData: PriceData | null | undefined;
-}
-
-interface Stock extends Security {
   divYield: number | null | undefined;
   peRatio: number | null | undefined;
   earningsYield: number | null | undefined;
+}
+
+interface Stock extends Security {
+
 }
 
 interface Etf extends Security {

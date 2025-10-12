@@ -89,6 +89,7 @@ export default function CombinedHoldingsPage() {
           break;
           
         case "AllAccountsWithMarketDataHoldingsMessage":
+          console.log(message.accounts)
           if (message.accounts) {
             setAccounts(message.accounts);
             setIsLoading(false);

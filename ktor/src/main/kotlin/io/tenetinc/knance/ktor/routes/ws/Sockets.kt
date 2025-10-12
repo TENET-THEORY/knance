@@ -14,6 +14,7 @@ fun Route.sockets(accountRepository: RealTimeDataLiveAccountRepository) {
     try {
       accountRepository.allAccountsWithHoldings().collect { message ->
         val serializedMessage = message.toSerializable()
+        println("Sending message: $serializedMessage")
         sendSerialized(serializedMessage)
       }
     } catch (e: Exception) {

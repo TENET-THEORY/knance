@@ -98,5 +98,8 @@ export function mapSecurityToHolding(security: Security): Holding {
     percentGain: security.priceData?.percentGain ?? null,
     dailyGain: security.priceData?.dailyGain ?? null,
     dailyPercentGain: security.priceData?.dailyPercentGain ?? null,
+    divYield: security.divYield ?? null,
+    peRatio: security.peRatio ?? null,
+    earningsYield: security.earningsYield ?? null,
   };
 }
