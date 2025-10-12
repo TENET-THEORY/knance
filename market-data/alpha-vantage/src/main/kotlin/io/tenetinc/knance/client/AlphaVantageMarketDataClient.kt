@@ -46,9 +46,9 @@ class AlphaVantageMarketDataClient(private val apiKey: String, private val httpC
     val symbolsParam = symbols.joinToString(",")
     val response =
         httpClient.get {
-          parameter("function", "REALTIME_BULK_QUOTES")
-          parameter("symbol", symbolsParam)
-          parameter("apikey", apiKey)
+          parameter(ParameterKeys.FUNCTION, FunctionValues.REAL_TIME_BULK_QUOTES)
+          parameter(ParameterKeys.SYMBOL, symbolsParam)
+          parameter(ParameterKeys.API_KEY, apiKey)
         }
     return response.body()
   }
@@ -56,9 +56,9 @@ class AlphaVantageMarketDataClient(private val apiKey: String, private val httpC
   private suspend fun getGlobalQuote(symbol: String): GlobalQuoteResponse {
     val response =
         httpClient.get {
-          parameter("function", "GLOBAL_QUOTE")
-          parameter("symbol", symbol)
-          parameter("apikey", apiKey)
+          parameter(ParameterKeys.FUNCTION, FunctionValues.GLOBAL_QUOTE)
+          parameter(ParameterKeys.SYMBOL, symbol)
+          parameter(ParameterKeys.API_KEY, apiKey)
         }
     return response.body()
   }

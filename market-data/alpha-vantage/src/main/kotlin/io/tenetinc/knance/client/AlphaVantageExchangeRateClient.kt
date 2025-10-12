@@ -7,6 +7,7 @@ import io.ktor.client.request.parameter
 import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.exchangerates.CurrencyExchangeRateResponse
 import io.tenetinc.knance.marketdata.client.ExchangeRateClient
 import io.tenetinc.knance.marketdata.model.ExchangeRate
+import java.util.function.Function
 
 class AlphaVantageExchangeRateClient(
     private val apiKey: String,
@@ -32,10 +33,10 @@ class AlphaVantageExchangeRateClient(
 
     val response =
         httpClient.get {
-          parameter("function", "CURRENCY_EXCHANGE_RATE")
-          parameter("from_currency", fromCurrency)
-          parameter("to_currency", toCurrency)
-          parameter("apikey", apiKey)
+          parameter(ParameterKeys.FUNCTION, FunctionValues.CURRENCY_EXCHANGE_RATE)
+          parameter(ParameterKeys.FROM_CURRENCY, fromCurrency)
+          parameter(ParameterKeys.TO_CURRENCY, toCurrency)
+          parameter(ParameterKeys.API_KEY, apiKey)
         }
 
     val data = response.body<CurrencyExchangeRateResponse>()
