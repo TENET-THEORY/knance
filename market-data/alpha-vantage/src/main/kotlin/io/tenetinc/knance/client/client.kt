@@ -14,4 +14,5 @@ object FunctionValues {
   const val REAL_TIME_BULK_QUOTES = "REAL_TIME_BULK_QUOTES"
   const val GLOBAL_QUOTE = "GLOBAL_QUOTE"
   const val CURRENCY_EXCHANGE_RATE = "CURRENCY_EXCHANGE_RATE"
+  const val OVERVIEW = "OVERVIEW"
 }
