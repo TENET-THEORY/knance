@@ -213,7 +213,7 @@ export default function SecurityHoldingsTable({
                     : "N/A"}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                  {holding.divYield ? `${holding.divYield.toFixed(2)}%` : "N/A"}
+                  {holding.divYield ? `${(holding.divYield * 100).toFixed(2)}%` : "N/A"}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                   {holding.divYield && holding.currentPrice
