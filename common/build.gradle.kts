@@ -4,8 +4,6 @@ plugins {
   alias(libs.plugins.npm.publish)
 }
 
-version = "0.0.1"
-
 kotlin {
   compilerOptions { optIn.add("kotlin.js.ExperimentalJsExport") }
 
@@ -38,7 +36,7 @@ npmPublish {
     named("js") {
       packageJson {
         name = "knance-common-api"
-        version = "0.0.1"
+        version = "0.0.2"
       }
     }
   }
