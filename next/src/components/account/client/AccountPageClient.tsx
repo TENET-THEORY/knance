@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AccountsViewModel } from "@common/api";
+import { AccountsViewModel } from "knance-common-api";
 import AccountHeader from "@/components/account/client/AccountHeader";
 import PortfolioSummary from "@/components/account/pure/PortfolioSummary";
 import SecurityHoldingsTable from "@/components/client/SecurityHoldingsTable";

@@ -1,4 +1,4 @@
-import {AccountsViewModel} from "@common/api";
+import {AccountsViewModel} from "knance-common-api";
 import AccountsHeader from "@/components/accounts/pure/AccountsHeader";
 import AccountsList from "@/components/accounts/pure/AccountsList";
 import Accounts from "@/components/accounts/client/Accounts";
