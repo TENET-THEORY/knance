@@ -8,7 +8,6 @@ import io.tenetinc.finance.alphavantage.io.tenetinc.knance.client.model.quotes.G
 import io.tenetinc.knance.marketdata.client.MarketDataClient
 import io.tenetinc.knance.marketdata.model.Quote
 import java.sql.Timestamp
-import java.time.LocalDateTime
 
 class AlphaVantageMarketDataClient(private val apiKey: String, private val httpClient: HttpClient) :
     MarketDataClient {
@@ -46,7 +45,7 @@ class AlphaVantageMarketDataClient(private val apiKey: String, private val httpC
     val symbolsParam = symbols.joinToString(",")
     val response =
         httpClient.get {
-          parameter(ParameterKeys.FUNCTION, FunctionValues.REAL_TIME_BULK_QUOTES)
+          parameter(ParameterKeys.FUNCTION, FunctionValues.REALTIME_BULK_QUOTES)
           parameter(ParameterKeys.SYMBOL, symbolsParam)
           parameter(ParameterKeys.API_KEY, apiKey)
         }
