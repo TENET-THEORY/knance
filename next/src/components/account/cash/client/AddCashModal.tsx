@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AccountsViewModel, CreateCashRequest } from "@common/api";
+import { AccountsViewModel, CreateCashRequest } from "knance-common-api";
 
 interface AddCashModalProps {
   isOpen: boolean;
