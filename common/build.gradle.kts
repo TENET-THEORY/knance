@@ -10,7 +10,6 @@ kotlin {
   jvm()
 
   js {
-    outputModuleName = "@common/api"
     browser()
     binaries.library()
     generateTypeScriptDefinitions()
@@ -36,7 +35,7 @@ npmPublish {
     named("js") {
       packageJson {
         name = "knance-common-api"
-        version = "0.0.2"
+        version = "0.0.3"
       }
     }
   }
